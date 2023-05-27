@@ -10,8 +10,8 @@ class PaymentCard extends StatelessWidget {
       margin: const EdgeInsets.symmetric(vertical: 280, horizontal: 20),
       child: Container(
         decoration: BoxDecoration(
-          boxShadow: const [BoxShadow(blurRadius: 7, offset: Offset(1, 1)), BoxShadow(blurRadius: 7, offset: Offset(-1, -1))],
-          color: Colors.greenAccent,
+          boxShadow: const [BoxShadow(blurRadius: 3, offset: Offset(1, 1))/*, BoxShadow(blurRadius: 1, offset: Offset(-1, -1))*/],
+          color: Colors.deepPurpleAccent,
           borderRadius: BorderRadius.circular(15),
         ),
         child: const Stack(children: [
@@ -19,7 +19,7 @@ class PaymentCard extends StatelessWidget {
             Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, crossAxisAlignment: CrossAxisAlignment.start, children: [
               Padding(
                 padding: EdgeInsets.only(top: 35, left: 35, bottom: 5),
-                child: Text("Pound", style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white)),
+                child: Text("Naira", style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white)),
               ),
 
               /// Bank Logo
@@ -33,11 +33,11 @@ class PaymentCard extends StatelessWidget {
             Row(children: [
               Padding(
                 padding: EdgeInsets.only(left: 35),
-                child: Image(image: ExactAssetImage(Constants.cardChip, package: Constants.packageName)),
+                child: Image(image: ExactAssetImage(Constants.cardChip, package: Constants.packageName), width: 45, height: 45),
                 //child: Icon(CupertinoIcons.creditcard, color: Colors.yellow, size: 40),
               )
             ]),
-            SizedBox(height: 10),
+            SizedBox(height: 5),
 
             /// Number
             Text(
@@ -55,7 +55,7 @@ class PaymentCard extends StatelessWidget {
             Column(children: [
               Text("MONTH/YEAR", style: TextStyle(fontSize: 11)),
               Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                Text("VALID THRU"),
+                Text("VALID \n THRU"),
                 SizedBox(width: 10),
                 Text("06/24", style: TextStyle(fontSize: 20)),
               ])
@@ -84,11 +84,11 @@ class PaymentCard extends StatelessWidget {
 
           /// Holder's name
           Positioned(
-            bottom: 25,
+            bottom: 15,
             left: 35,
             child: Text(
               "JAMES SMITH",
-              style: TextStyle(shadows: [BoxShadow(blurRadius: 0.1, offset: Offset(0, 1))], fontSize: 18),
+              style: TextStyle(shadows: [BoxShadow(blurRadius: 0.1, offset: Offset(0, 0))], fontSize: 18),
             ),
           ),
 
