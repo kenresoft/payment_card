@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:payment_card/data/constants/constants.dart';
 
 class PaymentCard extends StatelessWidget {
   const PaymentCard({Key? key}) : super(key: key);
@@ -60,7 +61,8 @@ class PaymentCard extends StatelessWidget {
             bottom: 10,
             right: 15,
             child: Column(crossAxisAlignment: CrossAxisAlignment.end, children: [
-              Text("VISA", style: TextStyle(fontSize: 38, fontWeight: FontWeight.bold, fontStyle: FontStyle.italic, color: Colors.blue)),
+              Image(image: ExactAssetImage(Constants.visaIcon)),
+              //Text("VISA", style: TextStyle(fontSize: 38, fontWeight: FontWeight.bold, fontStyle: FontStyle.italic, color: Colors.blue)),
               Text("Debit", style: TextStyle(fontSize: 18, color: Colors.blue)),
             ]),
           ),

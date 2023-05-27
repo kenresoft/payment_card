@@ -1,0 +1,28 @@
+{
+  "product": {
+    "name": "Apple Laptop",
+    "category": "Computer",
+    "price": "$1000",
+    "quantity": "1"
+  },
+  "customers": [
+    {
+      "name": "Peter",
+      "job": "Software Engineer",
+      "age": 35,
+      "country": "United States"
+    },
+    {
+      "name": "James",
+      "job": "Data Engineer",
+      "age": 35,
+      "country": "Canada"
+    },
+    {
+      "name": "John",
+      "job": "UX Engineer",
+      "age": 35,
+      "country": "United Kingdom"
+    }
+  ]
+}
