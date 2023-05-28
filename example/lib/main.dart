@@ -37,15 +37,14 @@ class _PaymentCardExampleState extends State<PaymentCardExample> {
     return const Scaffold(
       body: PaymentCard(
         cardIssuerIcon: CardIcon(),
-        backgroundColor: Colors.deepPurple,
+        backgroundColor: Colors.white,
         backgroundImage: '',
-        currency: '',
-        cardNumber: "1234 5678 9012 3456",
+        currency: 'Naira',
+        cardNumber: '1234 5678 9012 345',
         expiration: '',
         validity: '',
         holder: '',
-        cardType: '',
-        cardTypeIcon: CardIcon(),
+        cardType: CardType.mastercard,
       ),
     );
   }

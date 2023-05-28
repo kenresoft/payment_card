@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:payment_card/src/card_type.dart';
 import 'package:payment_card/src/constants/constants.dart';
 import 'package:payment_card/src/widgets/card_icon.dart';
 
@@ -14,7 +15,6 @@ class PaymentCard extends StatelessWidget {
     required this.validity,
     required this.holder,
     required this.cardType,
-    required this.cardTypeIcon,
   }) : super(key: key);
 
   final CardIcon? cardIssuerIcon;
@@ -25,8 +25,7 @@ class PaymentCard extends StatelessWidget {
   final String? expiration;
   final String? validity;
   final String? holder;
-  final String? cardType;
-  final CardIcon? cardTypeIcon;
+  final CardType? cardType;
 
   @override
   Widget build(BuildContext context) {
@@ -34,6 +33,7 @@ class PaymentCard extends StatelessWidget {
       margin: const EdgeInsets.symmetric(vertical: 280, horizontal: 20),
       child: Container(
         decoration: BoxDecoration(
+          image: const DecorationImage(image: ExactAssetImage(Constants.worldMap)),
           boxShadow: const [
             BoxShadow(blurRadius: 3, offset: Offset(1, 1)) /*, BoxShadow(blurRadius: 1, offset: Offset(-1, -1))*/
           ],
@@ -63,7 +63,7 @@ class PaymentCard extends StatelessWidget {
                 //child: Icon(CupertinoIcons.creditcard, color: Colors.yellow, size: 40),
               )
             ]),
-            SizedBox(height: 5),
+            const SizedBox(height: 5),
 
             /// Number
             Text(
@@ -75,7 +75,7 @@ class PaymentCard extends StatelessWidget {
               ),
             ),
 
-            SizedBox(height: 3),
+            const SizedBox(height: 3),
 
             /// Validity Date
             Column(children: [
@@ -92,7 +92,7 @@ class PaymentCard extends StatelessWidget {
             right: 10,
             child: Column(crossAxisAlignment: CrossAxisAlignment.end, children: [
               Image(
-                image: ExactAssetImage(Constants.visaNew, package: Constants.packageName),
+                image: ExactAssetImage(cardType!.getTypeIcon(), package: Constants.packageName),
                 width: 90,
                 height: 30,
                 fit: BoxFit.cover,
@@ -101,7 +101,7 @@ class PaymentCard extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.only(right: 5),
                 child: Text(
-                  "Debit",
+                  cardType.toString(),
                   style: TextStyle(fontSize: 18, color: Colors.blue),
                 ),
               ),
