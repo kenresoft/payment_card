@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
         colorSchemeSeed: Colors.blue,
       ),
       debugShowCheckedModeBanner: false,
-      home: const PaymentCardExample(title: 'RiffSwitch Example Page'),
+      home: const PaymentCardExample(title: 'Payment Card Example'),
     );
   }
 }
@@ -35,7 +35,18 @@ class _PaymentCardExampleState extends State<PaymentCardExample> {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      body: PaymentCard(),
+      body: PaymentCard(
+        cardIssuerIcon: CardIcon(),
+        backgroundColor: Colors.deepPurple,
+        backgroundImage: '',
+        currency: '',
+        cardNumber: "1234 5678 9012 3456",
+        expiration: '',
+        validity: '',
+        holder: '',
+        cardType: '',
+        cardTypeIcon: CardIcon(),
+      ),
     );
   }
 }
