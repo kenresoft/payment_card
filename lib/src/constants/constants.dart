@@ -9,13 +9,10 @@ class Constants {
   static const String iconDir = "assets/icons";
 
   //Images
-  static const String worldMap = "$imageDir/world_map.png";
-  static const String map = "$imageDir/image_maps";
+  static const String map = "$imageDir/image_maps.jpg";
+  static const String image2 = "$imageDir/image_2.jpg";
 
   //Icons
-  static const String visa = "$iconDir/visa.png";
-  static const String visaNew = "$iconDir/visa_new.png";
-  static const String mastercardNew = "$iconDir/mastercard_new.png";
+  static const String visaIcon = "$iconDir/visa_icon.png";
   static const String cardChip = "$iconDir/card_chip.png";
-  static const String cardCopper = "$iconDir/card_copper.png";
 }
