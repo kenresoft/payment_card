@@ -10,7 +10,7 @@ class Constants {
 
   //Images
   static const String worldMap = "$imageDir/world_map.png";
-  static const String map = "$imageDir/image_maps";
+  static const String map = "$imageDir/image_maps.jpg";
 
   //Icons
   static const String visa = "$iconDir/visa.png";

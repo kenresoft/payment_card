@@ -10,7 +10,15 @@ extension CardTypeIcon on CardType {
     return switch (this) {
       CardType.visa => Constants.visaNew,
       CardType.mastercard => Constants.mastercardNew,
-      _ => Constants.visa
+      _ => Constants.visa,
     };
+  }
+}
+
+extension StringExt on String {
+  String toFirstUpperCase() {
+    final first = substring(0, 1).toUpperCase();
+    final last = substring(1);
+    return first + last;
   }
 }

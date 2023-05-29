@@ -15,17 +15,19 @@ class PaymentCard extends StatelessWidget {
     required this.validity,
     required this.holder,
     required this.cardType,
+    this.cardTypeTextStyle,
   }) : super(key: key);
 
   final CardIcon? cardIssuerIcon;
   final Color? backgroundColor;
   final String? backgroundImage;
-  final String? currency;
-  final String? cardNumber;
+  final Text? currency;
+  final Text? cardNumber;
   final String? expiration;
   final String? validity;
   final String? holder;
   final CardType? cardType;
+  final TextStyle? cardTypeTextStyle;
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +35,7 @@ class PaymentCard extends StatelessWidget {
       margin: const EdgeInsets.symmetric(vertical: 280, horizontal: 20),
       child: Container(
         decoration: BoxDecoration(
-          image: const DecorationImage(image: ExactAssetImage(Constants.worldMap)),
+          image: const DecorationImage(image: ExactAssetImage(Constants.map)),
           boxShadow: const [
             BoxShadow(blurRadius: 3, offset: Offset(1, 1)) /*, BoxShadow(blurRadius: 1, offset: Offset(-1, -1))*/
           ],
@@ -45,7 +47,7 @@ class PaymentCard extends StatelessWidget {
             Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, crossAxisAlignment: CrossAxisAlignment.start, children: [
               Padding(
                 padding: const EdgeInsets.only(top: 35, left: 35, bottom: 5),
-                child: Text(currency!, style: const TextStyle(fontWeight: FontWeight.bold, color: Colors.white)),
+                child: buildCurrencyText,
               ),
 
               /// Bank Logo
@@ -59,7 +61,7 @@ class PaymentCard extends StatelessWidget {
             const Row(children: [
               Padding(
                 padding: EdgeInsets.only(left: 35),
-                child: Image(image: ExactAssetImage(Constants.cardChip, package: Constants.packageName), width: 45, height: 45),
+                child: Image(image: ExactAssetImage(Constants.worldMap, package: Constants.packageName), width: 45, height: 45),
                 //child: Icon(CupertinoIcons.creditcard, color: Colors.yellow, size: 40),
               )
             ]),
@@ -67,7 +69,7 @@ class PaymentCard extends StatelessWidget {
 
             /// Number
             Text(
-              cardNumber!,
+              cardNumber!.data!,
               style: const TextStyle(
                 shadows: [BoxShadow(blurRadius: 0.1, offset: Offset(1, 1))],
                 fontSize: 28,
@@ -78,7 +80,7 @@ class PaymentCard extends StatelessWidget {
             const SizedBox(height: 3),
 
             /// Validity Date
-            Column(children: [
+            const Column(children: [
               Text("MONTH/YEAR", style: TextStyle(fontSize: 11)),
               Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                 Text("VALID \n THRU"),
@@ -87,6 +89,25 @@ class PaymentCard extends StatelessWidget {
               ])
             ]),
           ]),
+
+          /// Arrow
+          const Positioned(
+            bottom: 45,
+            left: 0,
+            child: Icon(Icons.arrow_left, size: 36),
+          ),
+
+          /// Holder's name
+          const Positioned(
+            bottom: 15,
+            left: 35,
+            child: Text(
+              "JAMES SMITH",
+              style: TextStyle(shadows: [BoxShadow(blurRadius: 0.1, offset: Offset(0, 0))], fontSize: 18),
+            ),
+          ),
+
+          /// Card Type
           Positioned(
             bottom: 10,
             right: 10,
@@ -99,32 +120,24 @@ class PaymentCard extends StatelessWidget {
               ),
               //Text("VISA", style: TextStyle(fontSize: 38, fontWeight: FontWeight.bold, fontStyle: FontStyle.italic, color: Colors.blue)),
               Padding(
-                padding: EdgeInsets.only(right: 5),
+                padding: const EdgeInsets.only(right: 5),
                 child: Text(
-                  cardType.toString(),
-                  style: TextStyle(fontSize: 18, color: Colors.blue),
+                  cardType!.name.toFirstUpperCase(),
+                  style: cardTypeTextStyle,
                 ),
               ),
             ]),
           ),
-
-          /// Holder's name
-          Positioned(
-            bottom: 15,
-            left: 35,
-            child: Text(
-              "JAMES SMITH",
-              style: TextStyle(shadows: [BoxShadow(blurRadius: 0.1, offset: Offset(0, 0))], fontSize: 18),
-            ),
-          ),
-
-          /// Arrow
-          Positioned(
-            bottom: 45,
-            child: Icon(Icons.arrow_left, size: 36),
-          ),
         ]),
       ),
     );
+  }
+
+  Text get buildCurrencyText {
+    TextStyle textStyle;
+    currency!.style == null
+        ? textStyle = const TextStyle(fontWeight: FontWeight.bold, color: Colors.yellow)
+        : textStyle = currency!.style!.copyWith(fontWeight: FontWeight.bold, color: Colors.yellow);
+    return Text(currency!.data!, style: textStyle);
   }
 }
