@@ -26,3 +26,16 @@ extension TextStyleExt on TextStyle {
     return copyWith(package: Constants.packageName);
   }
 }
+
+getImage(
+  String assetName, {
+  double scale = 1.0,
+  AssetBundle? bundle,
+}) {
+  return ExactAssetImage(
+    assetName,
+    scale: scale,
+    bundle: bundle,
+    package: Constants.packageName,
+  );
+}
