@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:payment_card/src/card_type.dart';
 import 'package:payment_card/src/constants/constants.dart';
+import 'package:payment_card/src/extensions.dart';
 import 'package:payment_card/src/widgets/card_icon.dart';
 
 class PaymentCard extends StatelessWidget {
@@ -116,7 +117,7 @@ class PaymentCard extends StatelessWidget {
             right: 10,
             child: Column(crossAxisAlignment: CrossAxisAlignment.end, children: [
               Image(
-                image: ExactAssetImage(cardType!.getTypeIcon(), package: Constants.packageName),
+                image: ExactAssetImage(cardType!.getTypeIcon, package: Constants.packageName),
                 width: 90,
                 height: 30,
                 fit: BoxFit.cover,
@@ -125,7 +126,7 @@ class PaymentCard extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(right: 5),
                 child: Text(
-                  cardType!.name.toFirstUpperCase(),
+                  cardType!.name.toFirstUpperCase,
                   style: cardTypeTextStyle,
                 ),
               ),
@@ -147,6 +148,6 @@ class PaymentCard extends StatelessWidget {
         color: Colors.yellow,
       );
     }
-    return Text(currency!.data!, style: textStyle);
+    return Text(currency!.data!, style: textStyle.applyPackage);
   }
 }
