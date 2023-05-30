@@ -34,13 +34,13 @@ class PaymentCardExample extends StatefulWidget {
 class _PaymentCardExampleState extends State<PaymentCardExample> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: PaymentCard(
         cardIssuerIcon: CardIcon(),
         backgroundColor: Colors.blue,
         backgroundImage: '',
-        currency: Text('Naira', style: TextStyle(color: Colors.white, fontStyle: FontStyle.italic, foreground: Paint()..style)),
-        cardNumber: Text('1234 5678 9012 345'),
+        currency: Text('Naira', style: TextStyle(fontStyle: FontStyle.italic)),
+        cardNumber: Text('1234 5678 9012 3456'),
         expiration: '',
         validity: '',
         holder: '',

@@ -6,11 +6,9 @@ class CardIcon extends StatelessWidget {
   final IconData? icon;
 
   @override
-  Widget build(BuildContext context) {
-    return icon == null
-        ? const FlutterLogo(
-            size: 40,
-          )
-        : Icon(icon);
-  }
+  Widget build(BuildContext context) => icon == null
+      ? const FlutterLogo(
+          size: 40,
+        )
+      : Icon(icon);
 }
