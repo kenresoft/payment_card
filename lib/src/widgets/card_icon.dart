@@ -10,5 +10,5 @@ class CardIcon extends StatelessWidget {
       ? const FlutterLogo(
           size: 40,
         )
-      : Icon(icon);
+      : Icon(key: key, icon);
 }
