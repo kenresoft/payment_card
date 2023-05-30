@@ -35,7 +35,7 @@ class PaymentCard extends StatelessWidget {
       margin: const EdgeInsets.symmetric(vertical: 280, horizontal: 20),
       child: Container(
         decoration: BoxDecoration(
-          image: const DecorationImage(image: ExactAssetImage(Constants.map)),
+          image: const DecorationImage(image: ExactAssetImage(Constants.worldMap, package: Constants.packageName)),
           boxShadow: const [
             BoxShadow(blurRadius: 3, offset: Offset(1, 1)) /*, BoxShadow(blurRadius: 1, offset: Offset(-1, -1))*/
           ],
@@ -61,8 +61,11 @@ class PaymentCard extends StatelessWidget {
             const Row(children: [
               Padding(
                 padding: EdgeInsets.only(left: 35),
-                child: Image(image: ExactAssetImage(Constants.worldMap, package: Constants.packageName), width: 45, height: 45),
-                //child: Icon(CupertinoIcons.creditcard, color: Colors.yellow, size: 40),
+                child: Image(
+                  image: ExactAssetImage(Constants.cardChip, package: Constants.packageName),
+                  width: 45,
+                  height: 45,
+                ),
               )
             ]),
             const SizedBox(height: 5),
@@ -134,10 +137,16 @@ class PaymentCard extends StatelessWidget {
   }
 
   Text get buildCurrencyText {
-    TextStyle textStyle;
-    currency!.style == null
-        ? textStyle = const TextStyle(fontWeight: FontWeight.bold, color: Colors.yellow)
-        : textStyle = currency!.style!.copyWith(fontWeight: FontWeight.bold, color: Colors.yellow);
+    TextStyle textStyle = const TextStyle(
+      fontWeight: FontWeight.bold,
+      color: Colors.white,
+    );
+    if (currency!.style != null) {
+      textStyle = currency!.style!.copyWith(
+        fontWeight: FontWeight.bold,
+        color: Colors.yellow,
+      );
+    }
     return Text(currency!.data!, style: textStyle);
   }
 }
