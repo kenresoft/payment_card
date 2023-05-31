@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:payment_card/payment_card.dart';
-import 'package:payment_card/src/extensions.dart';
+import 'package:payment_card/src/util/extensions.dart';
 
 class CardText extends StatelessWidget {
   CardText(

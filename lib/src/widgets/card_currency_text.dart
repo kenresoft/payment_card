@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:payment_card/src/extensions.dart';
+import 'package:payment_card/src/util/extensions.dart';
 
 Widget buildCurrencyText(Text? currency) {
   TextStyle textStyle = const TextStyle(
