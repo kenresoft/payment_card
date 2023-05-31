@@ -1,5 +1,5 @@
 import 'package:payment_card/src/card_type.dart';
-import 'package:payment_card/src/extensions.dart';
+import 'package:payment_card/src/util/extensions.dart';
 
 class Constants {
   Constants._();

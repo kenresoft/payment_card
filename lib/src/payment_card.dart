@@ -1,14 +1,25 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:payment_card/src/card_type.dart';
 import 'package:payment_card/src/constants/constants.dart';
-import 'package:payment_card/src/extensions.dart';
+import 'package:payment_card/src/util/extensions.dart';
+import 'package:payment_card/src/util/helper.dart';
 import 'package:payment_card/src/widgets/card_currency_text.dart';
 import 'package:payment_card/src/widgets/card_icon.dart';
 import 'package:payment_card/src/widgets/card_image.dart';
 
 class PaymentCard extends StatelessWidget {
+  /// The __`PaymentCard`__ class is a Flutter widget that displays a payment card with customizable properties such as the
+  /// card number, card type, card holder name, and background image. It takes several required and optional parameters
+  /// such as `cardIssuerIcon`, `backgroundColor`, `backgroundImage`, `currency`, `cardNumber`, `validity`, `holder`,
+  /// `cardType`, `cardTypeTextStyle`, `cardNumberStyles`, and `margin`.
+  ///
+  /// The __build__ method of the __`PaymentCard`__ class returns a __Container__ widget with a height of 216 and a width of 320.
+  /// The __Container__ widget has a __BoxDecoration__ that includes a background image, a box shadow, a color, and a border
+  /// radius. The Container widget also has a __Stack__ widget as its child, which contains the various elements of the
+  /// payment card such as the card number, card type, card holder name, and card issuer icon.
+  ///
+  /// The __`PaymentCard`__ class uses the __LayoutBuilder__ widget to get the maximum width of the parent widget
+  // and logs it using the _log_ function from the dart:developer library.
   const PaymentCard({
     Key? key,
     this.cardIssuerIcon = const CardIcon(),
@@ -36,12 +47,25 @@ class PaymentCard extends StatelessWidget {
   final CardNumberStyles? cardNumberStyles;
   final EdgeInsetsGeometry? margin;
 
+  /// If cardNumberStyles is not provided, use the default style
   CardNumberStyles? get cardNumberStyle => cardNumberStyles ?? CardNumberStyles.lightStyle1;
+
+  //TODO:
+  // Possible bugs
+  // If the cardNumber parameter is null, the widget will throw an error.
+  // If the validity parameter is null, the widget will throw an error.
+  // If the holder parameter is null, the widget will throw an error.
+  // If the cardType parameter is null, the widget will throw an error.
+  // If the cardTypeTextStyle parameter is null, the widget will use the default text style.
+  // If the cardNumberStyles parameter is null, the widget will use the default card number styles.
+
+  // Add input validation to ensure that the required parameters are not null.
+  // Issue track here: [https://github.com/kenresoft/payment_card/issues/22]
 
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(builder: (context, c) {
-      log(c.maxWidth.toString());
+      //log(c.maxWidth.toString());
       return Container(
         margin: margin,
         height: 216,
@@ -94,7 +118,7 @@ class PaymentCard extends StatelessWidget {
 
             /// Number
             Text(
-              cardNumber!,
+              spacedDigits(cardNumber ?? '00000000'),
               style: cardNumberStyle!.buildTextStyle(),
             ),
 
