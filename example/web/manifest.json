@@ -1,6 +1,6 @@
 {
-    "name": "example",
-    "short_name": "example",
+    "name": "payment_card_example",
+    "short_name": "payment_card_example",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
