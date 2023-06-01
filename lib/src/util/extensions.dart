@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../payment_card.dart';
-import 'constants/constants.dart';
+import '../../payment_card.dart';
+import '../constants/constants.dart';
 
 extension CardTypeIcon on CardType {
   String get getTypeIcon {

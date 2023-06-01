@@ -1,5 +1,87 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:payment_card/payment_card.dart';
+import 'package:payment_card/src/constants/constants.dart';
 
 void main() {
-  test('Sample test', () {});
+  group('PaymentCard', () {
+    testWidgets('renders correctly', (WidgetTester tester) async {
+      await tester.pumpWidget(
+        const MaterialApp(
+          home: PaymentCard(
+            backgroundColor: Colors.blue,
+            backgroundImage: Constants.worldMap,
+            currency: Text('USD'),
+            cardNumber: '1234567890123456',
+            validity: '12/24',
+            holder: 'John Doe',
+            cardType: CardType.visa,
+          ),
+        ),
+      );
+
+      expect(find.text('USD'), findsOneWidget);
+      expect(find.text('1234567890123456'), findsOneWidget);
+      expect(find.text('12/24'), findsOneWidget);
+      expect(find.text('John Doe'), findsOneWidget);
+      expect(find.byType(Image), findsNWidgets(3));
+      expect(find.byType(Text), findsNWidgets(5));
+    });
+
+    testWidgets('throws error if cardNumber is not provided', (WidgetTester tester) async {
+      expect(() {
+        return const PaymentCard(
+          backgroundColor: Colors.blue,
+          backgroundImage: Constants.worldMap,
+          currency: Text('USD'),
+          validity: '12/24',
+          holder: 'John Doe',
+          cardType: CardType.visa,
+          cardNumber: null,
+        );
+      }, throwsAssertionError);
+    });
+
+    testWidgets('throws error if validity is not provided', (WidgetTester tester) async {
+      expect(() {
+        return const PaymentCard(
+          backgroundColor: Colors.blue,
+          backgroundImage: Constants.worldMap,
+          currency: Text('USD'),
+          cardNumber: '1234567890123456',
+          holder: 'John Doe',
+          cardType: CardType.visa,
+          validity: null,
+        );
+      }, throwsAssertionError);
+    });
+
+    testWidgets('throws error if holder is not provided', (WidgetTester tester) async {
+      expect(() {
+        return const PaymentCard(
+          backgroundColor: Colors.blue,
+          backgroundImage: Constants.worldMap,
+          currency: Text('USD'),
+          cardNumber: '1234567890123456',
+          validity: '12/24',
+          cardType: CardType.visa,
+          holder: null,
+        );
+      }, throwsAssertionError);
+    });
+
+    testWidgets('throws error if cardType is not provided', (WidgetTester tester) async {
+      expect(() {
+        return const PaymentCard(
+          backgroundColor: Colors.blue,
+          backgroundImage: Constants.worldMap,
+          currency: Text('USD'),
+          cardNumber: '1234567890123456',
+          validity: '12/24',
+          holder: 'John Doe',
+          cardType: null,
+        );
+      }, throwsAssertionError);
+    });
+  });
 }
