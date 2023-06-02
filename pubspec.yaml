@@ -1,5 +1,5 @@
 name: payment_card
-description: Flutter Custom Credit Card Widget
+description: A custom widget for creating beautiful payment(eg. credit or debit) cards on flutter.
 version: 0.0.1
 homepage: ''
 

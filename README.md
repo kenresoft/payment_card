@@ -18,17 +18,17 @@ card number, card type, card holder name, and background image.
 
 The __`PaymentCard`__ widget takes several required and optional parameters
 such as: 
-1. `cardIssuerIcon`, 
-2. `backgroundColor`, 
-3. `backgroundImage`, 
-4. `currency`, 
-5. `cardNumber`, 
-6. `validity`, 
-7. `holder`,
-8. `cardType`, 
-9. `cardTypeTextStyle`, 
-10. `cardNumberStyles`, and 
-11. `margin`.
+* `cardIssuerIcon`, 
+* `backgroundColor`, 
+* `backgroundImage`, 
+* `currency`, 
+* `cardNumber`, 
+* `validity`, 
+* `holder`,
+* `cardType`, 
+* `cardTypeTextStyle`, 
+* `cardNumberStyles`, and 
+* `margin`.
 
 ## Getting started
 
