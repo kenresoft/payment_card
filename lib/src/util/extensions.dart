@@ -7,8 +7,12 @@ import '../constants/constants.dart';
 extension CardTypeIcon on CardType {
   String get getTypeIcon {
     return switch (this) {
-      CardType.visa => Constants.visaNew,
-      CardType.mastercard => Constants.mastercardNew,
+      CardType.visa => Constants.visa,
+      CardType.mastercard => Constants.mastercard,
+      CardType.verve => Constants.verve,
+      CardType.americanExpress => Constants.americanExpress,
+      CardType.discover => Constants.discover,
+      CardType.jcb => Constants.jcb,
       _ => Constants.visa,
     };
   }

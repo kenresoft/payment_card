@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:payment_card/src/card_type.dart';
 import 'package:payment_card/src/constants/constants.dart';
 import 'package:payment_card/src/util/extensions.dart';
@@ -94,8 +95,8 @@ class PaymentCard extends StatelessWidget {
             ]),
 
             /// Chip
-            const Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-              Padding(
+            Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+              const Padding(
                 padding: EdgeInsets.only(left: 35),
                 child: Image(
                   image: ExactAssetImage(Constants.cardChip, package: Constants.packageName),
@@ -104,13 +105,19 @@ class PaymentCard extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: EdgeInsets.only(right: 5),
-                child: Image(
+                padding: const EdgeInsets.only(right: 5),
+                child: /*Image(
                   image: ExactAssetImage(Constants.rfid, package: Constants.packageName),
                   width: 45,
                   height: 40,
                   isAntiAlias: true,
                   filterQuality: FilterQuality.none,
+                ),*/
+                    SvgPicture.asset(
+                  Constants.rfid,
+                  package: Constants.packageName,
+                  width: 32,
+                  height: 32,
                 ),
               )
             ]),
@@ -159,19 +166,26 @@ class PaymentCard extends StatelessWidget {
 
           /// Card Type
           Positioned(
-            bottom: cardType.index == 1 ? -10 : 0,
+            bottom: 10 /*cardType.index == 1 ? -10 : 0*/,
             right: 10,
-            child: Image(
+            child: /*Image(
               image: ExactAssetImage(cardType.getTypeIcon, package: Constants.packageName),
               width: 75,
               height: 75,
               fit: BoxFit.cover,
+            ),*/
+                SvgPicture.asset(
+              cardType.getTypeIcon,
+              package: Constants.packageName,
+              width: 48,
+              height: 32,
+              //fit: BoxFit.cover,
             ),
           ),
 
           Positioned(
-            bottom: 3,
-            right: 10,
+            top: 70,
+            left: 100,
             child: Padding(
               padding: const EdgeInsets.only(right: 5),
               child: Text(
