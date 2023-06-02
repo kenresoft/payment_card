@@ -39,16 +39,16 @@ class PaymentCard extends StatelessWidget {
   final Color? backgroundColor;
   final String? backgroundImage;
   final Text? currency;
-  final String? cardNumber;
-  final String? validity;
-  final String? holder;
-  final CardType? cardType;
+  final String cardNumber;
+  final String validity;
+  final String holder;
+  final CardType cardType;
   final TextStyle? cardTypeTextStyle;
   final CardNumberStyles? cardNumberStyles;
   final EdgeInsetsGeometry? margin;
 
   /// If cardNumberStyles is not provided, use the default style
-  CardNumberStyles? get cardNumberStyle => cardNumberStyles ?? CardNumberStyles.lightStyle1;
+  CardNumberStyles get cardNumberStyle => cardNumberStyles ?? CardNumberStyles.lightStyle1;
 
   //TODO:
   // Possible bugs
@@ -118,8 +118,8 @@ class PaymentCard extends StatelessWidget {
 
             /// Number
             Text(
-              spacedDigits(cardNumber ?? '00000000'),
-              style: cardNumberStyle!.buildTextStyle(),
+              spacedDigits(cardNumber),
+              style: cardNumberStyle.buildTextStyle(),
             ),
 
             const SizedBox(height: 3),
@@ -130,7 +130,7 @@ class PaymentCard extends StatelessWidget {
               Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                 const Text("VALID\nTHRU", textAlign: TextAlign.center),
                 const SizedBox(width: 10),
-                Text(validity!, style: const TextStyle(fontSize: 20)),
+                Text(validity, style: const TextStyle(fontSize: 20)),
               ])
             ]),
           ]),
@@ -147,7 +147,7 @@ class PaymentCard extends StatelessWidget {
             bottom: 15,
             left: 35,
             child: Text(
-              holder!,
+              holder,
               style: const TextStyle(
                 fontFamily: 'Inconsolata',
                 fontWeight: FontWeight.w500,
@@ -159,10 +159,10 @@ class PaymentCard extends StatelessWidget {
 
           /// Card Type
           Positioned(
-            bottom: cardType?.index == 1 ? -10 : 0,
+            bottom: cardType.index == 1 ? -10 : 0,
             right: 10,
             child: Image(
-              image: ExactAssetImage(cardType!.getTypeIcon, package: Constants.packageName),
+              image: ExactAssetImage(cardType.getTypeIcon, package: Constants.packageName),
               width: 75,
               height: 75,
               fit: BoxFit.cover,
@@ -175,7 +175,7 @@ class PaymentCard extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.only(right: 5),
               child: Text(
-                cardType?.index == 1 ? '' : 'Debit',
+                cardType.index == 1 ? '' : 'Debit',
                 style: cardTypeTextStyle,
               ),
             ),
