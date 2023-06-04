@@ -2,6 +2,9 @@ enum CardType {
   visa,
   mastercard,
   verve,
+  americanExpress,
+  discover,
+  jcb,
   other,
 }
 
@@ -13,5 +16,3 @@ enum CardNumberStyles {
   darkStyle5,
   darkStyle6,
 }
-
-
