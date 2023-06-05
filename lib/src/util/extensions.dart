@@ -28,12 +28,14 @@ extension CardTypeIcon on CardType {
           height: 40,
           fit: BoxFit.contain,
         ),
-      CardType.americanExpress => SvgPicture.asset(
+      CardType.americanExpress => const Image(
+        image: ExactAssetImage(
           Constants.americanExpress,
           package: Constants.packageName,
-          height: 40,
-          fit: BoxFit.fitWidth,
         ),
+        height: 40,
+        fit: BoxFit.fitWidth,
+      ),
       CardType.discover => SvgPicture.asset(
           Constants.discover,
           package: Constants.packageName,

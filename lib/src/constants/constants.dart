@@ -27,8 +27,10 @@ class Constants {
 
   static const String cardChip = "$pngDir/card_chip.png";
 
+  static const String visa = "$pngDir/visa_new.png";
+  static const String americanExpress = "$pngDir/american_express.png";
+
 /*
-static const String visa = "$iconDir/visa.png";
   static const String visaNew = "$iconDir/visa_new.png";
   static const String mastercardNew = "$iconDir/mastercard_new.png";
   static const String verve = "$iconDir/verve.png";
@@ -42,10 +44,10 @@ static const String visa = "$iconDir/visa.png";
   // SVGs
   static const String rfid = "$svgDir/rfid.svg";
 
-  static const String visa = "$svgDir/visa.svg";
+  //static const String visa = "$svgDir/visa.svg";
   static const String mastercard = "$svgDir/mastercard.svg";
   static const String verve = "$svgDir/verve.svg";
-  static const String americanExpress = "$svgDir/american_express.svg";
+  //static const String americanExpress = "$svgDir/american_express.svg";
   static const String discover = "$svgDir/discover.svg";
   static const String jcb = "$svgDir/jcb.svg";
 
