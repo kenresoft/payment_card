@@ -1,19 +1,57 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 import '../../payment_card.dart';
 import '../constants/constants.dart';
 
 extension CardTypeIcon on CardType {
-  String get getTypeIcon {
+  Widget get getTypeIcon {
     return switch (this) {
-      CardType.visa => Constants.visa,
-      CardType.mastercard => Constants.mastercard,
-      CardType.verve => Constants.verve,
-      CardType.americanExpress => Constants.americanExpress,
-      CardType.discover => Constants.discover,
-      CardType.jcb => Constants.jcb,
-      _ => Constants.visa,
+      CardType.visa => const Image(
+          image: ExactAssetImage(
+            Constants.visa,
+            package: Constants.packageName,
+          ),
+          height: 40,
+          fit: BoxFit.fitWidth,
+        ),
+      CardType.mastercard => SvgPicture.asset(
+          Constants.mastercard,
+          package: Constants.packageName,
+          height: 40,
+          fit: BoxFit.contain,
+        ),
+      CardType.verve => SvgPicture.asset(
+          Constants.verve,
+          package: Constants.packageName,
+          height: 40,
+          fit: BoxFit.contain,
+        ),
+      CardType.americanExpress => SvgPicture.asset(
+          Constants.americanExpress,
+          package: Constants.packageName,
+          height: 40,
+          fit: BoxFit.fitWidth,
+        ),
+      CardType.discover => SvgPicture.asset(
+          Constants.discover,
+          package: Constants.packageName,
+          height: 40,
+          fit: BoxFit.fitWidth,
+        ),
+      CardType.jcb => SvgPicture.asset(
+          Constants.jcb,
+          package: Constants.packageName,
+          height: 35,
+          fit: BoxFit.contain,
+        ),
+      _ => SvgPicture.asset(
+          Constants.visa,
+          package: Constants.packageName,
+          height: 40,
+          fit: BoxFit.fitWidth,
+        ),
     };
   }
 }

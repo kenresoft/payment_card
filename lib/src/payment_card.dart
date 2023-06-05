@@ -65,6 +65,12 @@ class PaymentCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Color? kColor;
+    if (backgroundColor == Colors.deepOrange || backgroundColor == Colors.deepOrangeAccent) {
+      kColor = Colors.black12;
+    } else {
+      kColor = null;
+    }
     return LayoutBuilder(builder: (context, c) {
       //log(c.maxWidth.toString());
       return Container(
@@ -168,19 +174,15 @@ class PaymentCard extends StatelessWidget {
           Positioned(
             bottom: 10 /*cardType.index == 1 ? -10 : 0*/,
             right: 10,
+            //height: 45,
+            width: 80,
             child: /*Image(
               image: ExactAssetImage(cardType.getTypeIcon, package: Constants.packageName),
               width: 75,
               height: 75,
               fit: BoxFit.cover,
             ),*/
-                SvgPicture.asset(
-              cardType.getTypeIcon,
-              package: Constants.packageName,
-              width: 48,
-              height: 32,
-              //fit: BoxFit.cover,
-            ),
+                Container(color: kColor, child: cardType.getTypeIcon),
           ),
 
           Positioned(
