@@ -1,4 +1,3 @@
-
 /// Read more about these functions here:
 ///
 /// [Payment card number division with a space as the separator.](https://gist.github.com/kenresoft/bc91291c6d1d06826002939c38f5498a)
@@ -34,11 +33,28 @@ int divisionsWithRemainder(String input) {
   return divisions;
 }
 
-String spacedDigits(String input) {
+/// * The `spacedDigits()` function takes two arguments: the input string and the divisor. The divisor is optional. If the divisor is not provided, then the function will use the number of digits in the input string as the divisor.
+///
+/// * The `spacedDigits()` function works by first calling the `space()` function to get a string with spaces inserted between each digit of the input string. If the divisor is provided, then the `space()` function will use the divisor to determine how many spaces to insert between each digit.
+///
+/// * The `spacedDigits()` function then returns the string with spaces inserted between each digit.
+///
+/// Here is an example of how to use the `spacedDigits()` function:
+///
+/// ```
+/// String input = "123456789";
+/// String spacedOutput = spacedDigits(input, 2);
+/// print(spacedOutput); // "12 34 56 78 9"
+/// ```
+String spacedDigits(String input, int? div) {
   int count = 0;
   String spacedOutput = '';
 
-  if (space(input) == input) {
+  if (div != null) {
+    return space(input, () => div);
+  }
+
+  if (space(input, () => divisions(input)) == input) {
     for (var i = 0; i < input.length; i++) {
       if (count == divisionsWithRemainder(input)) {
         spacedOutput += ' ';
@@ -48,20 +64,23 @@ String spacedDigits(String input) {
       count += 1;
     }
   } else {
-    spacedOutput = space(input);
+    spacedOutput = space(
+      input,
+      () => divisions(input),
+    );
   }
   return spacedOutput.trim();
 }
 
 // This function takes a string input and adds spaces after every n characters, where n
 // is the number of divisions calculated by the divisions() function.
-String space(String input) {
+String space(String input, int Function() div) {
   int count = 0;
   String spacedOutput = '';
 
   // Loop through each character in the input string
   for (var i = 0; i < input.length; i++) {
-    if (count == divisions(input)) {
+    if (count == div()) {
       // If the count is equal to the number of divisions, add a space character
       spacedOutput += ' ';
       count = 0;

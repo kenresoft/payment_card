@@ -72,6 +72,7 @@ class _PaymentCardExampleState extends State<PaymentCardExample> {
       backgroundImage: bg,
       currency: const Text('Naira', style: TextStyle(color: Colors.black)),
       cardNumber: '1234567890123456',
+      cardNumberDivision: 3,
       cardNumberStyles: CardNumberStyles.lightStyle1,
       validity: '06/24',
       holder: 'JAMES SMITH',
