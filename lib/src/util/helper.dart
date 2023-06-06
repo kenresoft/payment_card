@@ -1,3 +1,5 @@
+import 'matcher.dart';
+
 /// Read more about these functions here:
 ///
 /// [Payment card number division with a space as the separator.](https://gist.github.com/kenresoft/bc91291c6d1d06826002939c38f5498a)
@@ -46,30 +48,35 @@ int divisionsWithRemainder(String input) {
 /// String spacedOutput = spacedDigits(input, 2);
 /// print(spacedOutput); // "12 34 56 78 9"
 /// ```
-String spacedDigits(String input, int? div) {
+String spacedDigits(String input, int? div, bool strict) {
   int count = 0;
   String spacedOutput = '';
+  strict ? matchCard(input) : true;
 
   if (div != null) {
     return space(input, () => div);
   }
 
-  if (space(input, () => divisions(input)) == input) {
-    for (var i = 0; i < input.length; i++) {
-      if (count == divisionsWithRemainder(input)) {
-        spacedOutput += ' ';
-        count = 0;
+  if (strict) {
+    if (space(input, () => divisions(input)) == input) {
+      for (var i = 0; i < input.length; i++) {
+        if (count == divisionsWithRemainder(input)) {
+          spacedOutput += ' ';
+          count = 0;
+        }
+        spacedOutput += input[i];
+        count += 1;
       }
-      spacedOutput += input[i];
-      count += 1;
+    } else {
+      spacedOutput = space(
+        input,
+            () => divisions(input),
+      );
     }
+    return spacedOutput.trim();
   } else {
-    spacedOutput = space(
-      input,
-      () => divisions(input),
-    );
+    return 'Invalid card number';
   }
-  return spacedOutput.trim();
 }
 
 // This function takes a string input and adds spaces after every n characters, where n
