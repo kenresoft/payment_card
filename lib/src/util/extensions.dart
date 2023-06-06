@@ -1,61 +1,95 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:payment_card/src/util/matcher.dart';
 
 import '../../payment_card.dart';
 import '../constants/constants.dart';
 
 extension CardTypeIcon on CardType {
-  Widget get getTypeIcon {
-    return switch (this) {
-      CardType.visa => const Image(
-          image: ExactAssetImage(
-            Constants.visa,
-            package: Constants.packageName,
-          ),
-          height: 40,
-          fit: BoxFit.fitWidth,
-        ),
-      CardType.mastercard => SvgPicture.asset(
-          Constants.mastercard,
-          package: Constants.packageName,
-          height: 40,
-          fit: BoxFit.contain,
-        ),
-      CardType.verve => SvgPicture.asset(
-          Constants.verve,
-          package: Constants.packageName,
-          height: 40,
-          fit: BoxFit.contain,
-        ),
-      CardType.americanExpress => const Image(
-        image: ExactAssetImage(
-          Constants.americanExpress,
-          package: Constants.packageName,
-        ),
-        height: 40,
-        fit: BoxFit.fitWidth,
-      ),
-      CardType.discover => SvgPicture.asset(
-          Constants.discover,
-          package: Constants.packageName,
-          height: 40,
-          fit: BoxFit.fitWidth,
-        ),
-      CardType.jcb => SvgPicture.asset(
-          Constants.jcb,
-          package: Constants.packageName,
-          height: 35,
-          fit: BoxFit.contain,
-        ),
-      _ => SvgPicture.asset(
-          Constants.visa,
-          package: Constants.packageName,
-          height: 40,
-          fit: BoxFit.fitWidth,
-        ),
-    };
+  /// The `getTypeIcon()` function can be used to get icons for other types of cards, such as debit cards, gift cards, and prepaid cards.<br>
+  ///
+  ///The `getTypeIcon()` function works by first checking if the input string should be validated strictly. <br>
+  ///If the input string should be validated strictly, then the function uses the `resolvePrefix()` function to get a
+  ///widget that displays the icon for the credit card network associated with the first character of the input string. <br>
+  ///If the input string should not be validated strictly, then the function uses a switch statement to get a widget that
+  ///displays the icon for the credit card network associated with the input string. <br>
+  ///
+  ///The `getTypeIcon()` function then returns the widget.
+
+  Widget getTypeIcon(String number, bool isStrict) {
+    if (isStrict) {
+      return resolvePrefix(number, (a, b) => this != CardType.verve ? a : b);
+    } else {
+      return switch (this) {
+        CardType.visa => visa,
+        CardType.mastercard => mastercard,
+        CardType.verve => verve,
+        CardType.americanExpress => americanExpress,
+        CardType.discover => discover,
+        CardType.jcb => jcb,
+        _ => visa,
+      };
+    }
   }
+}
+
+SvgPicture get jcb {
+  return SvgPicture.asset(
+    Constants.jcb,
+    package: Constants.packageName,
+    height: 35,
+    fit: BoxFit.contain,
+  );
+}
+
+SvgPicture get discover {
+  return SvgPicture.asset(
+    Constants.discover,
+    package: Constants.packageName,
+    height: 40,
+    fit: BoxFit.fitWidth,
+  );
+}
+
+Image get americanExpress {
+  return const Image(
+    image: ExactAssetImage(
+      Constants.americanExpress,
+      package: Constants.packageName,
+    ),
+    height: 40,
+    fit: BoxFit.fitWidth,
+  );
+}
+
+SvgPicture get verve {
+  return SvgPicture.asset(
+    Constants.verve,
+    package: Constants.packageName,
+    height: 40,
+    fit: BoxFit.contain,
+  );
+}
+
+SvgPicture get mastercard {
+  return SvgPicture.asset(
+    Constants.mastercard,
+    package: Constants.packageName,
+    height: 40,
+    fit: BoxFit.contain,
+  );
+}
+
+Image get visa {
+  return const Image(
+    image: ExactAssetImage(
+      Constants.visa,
+      package: Constants.packageName,
+    ),
+    height: 40,
+    fit: BoxFit.fitWidth,
+  );
 }
 
 extension StringExt on String {
