@@ -35,6 +35,7 @@ class PaymentCard extends StatelessWidget {
     this.cardNumberStyles,
     this.margin,
     this.cardNumberDivision,
+    this.isStrict = true,
   }) : super(key: key);
 
   final CardIcon? cardIssuerIcon;
@@ -42,6 +43,7 @@ class PaymentCard extends StatelessWidget {
   final String? backgroundImage;
   final Text? currency;
   final String cardNumber;
+  final bool isStrict;
   final int? cardNumberDivision;
   final String validity;
   final String holder;
@@ -133,7 +135,7 @@ class PaymentCard extends StatelessWidget {
 
             /// Number
             Text(
-              spacedDigits(cardNumber, cardNumberDivision),
+              spacedDigits(cardNumber, cardNumberDivision, isStrict),
               style: cardNumberStyle.buildTextStyle(),
             ),
 
