@@ -28,7 +28,7 @@ class Constants {
   static const String cardChip = "$pngDir/card_chip.png";
 
   static const String visa = "$pngDir/visa_new.png";
-  static const String americanExpress = "$pngDir/american_express.png";
+  //static const String americanExpress = "$pngDir/american_express.png";
 
 /*
   static const String visaNew = "$iconDir/visa_new.png";
@@ -47,7 +47,7 @@ class Constants {
   //static const String visa = "$svgDir/visa.svg";
   static const String mastercard = "$svgDir/mastercard.svg";
   static const String verve = "$svgDir/verve.svg";
-  //static const String americanExpress = "$svgDir/american_express.svg";
+  static const String americanExpress = "$svgDir/american_express.svg";
   static const String discover = "$svgDir/discover.svg";
   static const String jcb = "$svgDir/jcb.svg";
 

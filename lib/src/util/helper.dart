@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'matcher.dart';
 
 /// Read more about these functions here:
@@ -51,13 +53,13 @@ int divisionsWithRemainder(String input) {
 String spacedDigits(String input, int? div, bool strict) {
   int count = 0;
   String spacedOutput = '';
-  strict ? matchCard(input) : true;
-
-  if (div != null) {
-    return space(input, () => div);
-  }
+  strict = strict ? matchCard(input) : true;
 
   if (strict) {
+    if (div != null) {
+      return space(input, () => div);
+    }
+
     if (space(input, () => divisions(input)) == input) {
       for (var i = 0; i < input.length; i++) {
         if (count == divisionsWithRemainder(input)) {
@@ -70,11 +72,12 @@ String spacedDigits(String input, int? div, bool strict) {
     } else {
       spacedOutput = space(
         input,
-            () => divisions(input),
+        () => divisions(input),
       );
     }
     return spacedOutput.trim();
   } else {
+    log('Invalid card number');
     return 'Invalid card number';
   }
 }

@@ -40,23 +40,23 @@ class _PaymentCardExampleState extends State<PaymentCardExample> {
           child: Column(
             children: [
               const SizedBox(height: 50),
-              buildPaymentCard(color: Colors.cyan, CardType.americanExpress),
+              buildPaymentCard(color: Colors.cyan, cardType: CardType.americanExpress, '4234567890'),
               const SizedBox(height: 10),
-              buildPaymentCard(color: Colors.orange, CardType.discover),
+              buildPaymentCard(color: Colors.orange, cardType: CardType.discover, '5234567890'),
               const SizedBox(height: 10),
-              buildPaymentCard(color: Colors.purpleAccent, CardType.jcb),
+              buildPaymentCard(color: Colors.purpleAccent, cardType: CardType.jcb, '6234567890'),
               const SizedBox(height: 10),
-              buildPaymentCard(color: Colors.redAccent, CardType.mastercard),
+              buildPaymentCard(color: Colors.redAccent, cardType: CardType.mastercard, '4234567890'),
               const SizedBox(height: 10),
-              buildPaymentCard(color: Colors.teal, CardType.visa),
+              buildPaymentCard(color: Colors.teal, cardType: CardType.visa, '5234567890'),
               const SizedBox(height: 10),
-              buildPaymentCard(color: Colors.pink, CardType.verve),
+              buildPaymentCard(color: Colors.pink, cardType: CardType.verve, '6234567890'),
               const SizedBox(height: 10),
-              buildPaymentCard(bg: 'packages/payment_card/assets/images/bg/1.png', CardType.visa),
+              buildPaymentCard(bg: 'packages/payment_card/assets/images/bg/1.png', cardType: CardType.visa, '4234567890'),
               const SizedBox(height: 10),
-              buildPaymentCard(bg: 'packages/payment_card/assets/images/bg/2.png', CardType.mastercard),
+              buildPaymentCard(bg: 'packages/payment_card/assets/images/bg/2.png', cardType: CardType.mastercard, '5234567890'),
               const SizedBox(height: 10),
-              buildPaymentCard(bg: 'packages/payment_card/assets/images/bg/3.png', CardType.visa),
+              buildPaymentCard(bg: 'packages/payment_card/assets/images/bg/3.png', cardType: CardType.visa, '6234567890'),
               const SizedBox(height: 10),
             ],
           ),
@@ -65,18 +65,19 @@ class _PaymentCardExampleState extends State<PaymentCardExample> {
     );
   }
 
-  PaymentCard buildPaymentCard(CardType cardType, {Color? color, String? bg}) {
+  PaymentCard buildPaymentCard(String cardNumber, {CardType? cardType, Color? color, String? bg}) {
     return PaymentCard(
       cardIssuerIcon: const CardIcon(),
       backgroundColor: color,
       backgroundImage: bg,
       currency: const Text('Naira', style: TextStyle(color: Colors.black)),
-      cardNumber: '1234567890123456',
+      cardNumber: cardNumber,
       cardNumberDivision: 3,
       cardNumberStyles: CardNumberStyles.lightStyle1,
       validity: '06/24',
       holder: 'JAMES SMITH',
       cardType: cardType,
+      isStrict: true,
       cardTypeTextStyle: const TextStyle(fontSize: 18, color: Colors.black),
     );
   }
