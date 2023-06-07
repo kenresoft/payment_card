@@ -53,7 +53,7 @@ int divisionsWithRemainder(String input) {
 String spacedDigits(String input, int? div, bool strict) {
   int count = 0;
   String spacedOutput = '';
-  strict = strict ? matchCard(input) : true;
+  strict = strict ? Matcher.matchCard(input) : true;
 
   if (strict) {
     if (div != null) {
@@ -77,7 +77,6 @@ String spacedDigits(String input, int? div, bool strict) {
     }
     return spacedOutput.trim();
   } else {
-    log('Invalid card number');
     return 'Invalid card number';
   }
 }
