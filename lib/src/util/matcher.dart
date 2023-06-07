@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../widgets/card_network.dart';
+import '../widgets/card_network_icon.dart';
 
 class Matcher {
   Matcher._();
@@ -22,7 +22,7 @@ class Matcher {
   /// * ``: The dollar sign symbol matches the end of the string.
   static bool matchCard(String input) {
     //RegExp regex = RegExp(r'^[456]\d{15}|[456]\d{16}$');
-    RegExp regex = RegExp(r'^[1-3]\d{15}|[456]\d{16}$');
+    RegExp regex = RegExp(r'^[1-3]\d{14}|[456]\d{15}$');
     final match = regex.hasMatch(input);
     return match;
   }
@@ -33,17 +33,17 @@ class Matcher {
     //Match? match = regex.matchAsPrefix(input);
 
     final first = input[0];
-    final second = input[1] == '5' ? 5 : -1;
+    final second = input[0] == '3' && input[1] == '5' ? 5 : -1;
     (String, int) char = (first, second);
     return switch (char) {
-      ('1', -1) => CardNetwork.americanExpress,
-      ('2', -1) => CardNetwork.americanExpress,
-      ('3', -1) => CardNetwork.americanExpress,
-      ('3', 5) => CardNetwork.jcb,
-      ('4', -1) => CardNetwork.visa,
-      ('5', -1) => widgets(CardNetwork.mastercard, CardNetwork.verve),
-      ('6', -1) => CardNetwork.discover,
-      _ => CardNetwork.visa,
+      ('1', -1) => CardNetworkIcon.americanExpress,
+      ('2', -1) => CardNetworkIcon.americanExpress,
+      ('3', -1) => CardNetworkIcon.americanExpress,
+      ('3', 5) => CardNetworkIcon.jcb,
+      ('4', -1) => CardNetworkIcon.visa,
+      ('5', -1) => widgets(CardNetworkIcon.mastercard, CardNetworkIcon.verve),
+      ('6', -1) => CardNetworkIcon.discover,
+      _ => CardNetworkIcon.verve,
     };
   }
 

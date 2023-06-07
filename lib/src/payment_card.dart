@@ -30,7 +30,7 @@ class PaymentCard extends StatelessWidget {
     required this.cardNumber,
     required this.validity,
     required this.holder,
-    this.cardNetwork,
+    this.cardNetwork = CardNetwork.other,
     this.cardTypeTextStyle,
     this.cardNumberStyles,
     this.margin,

@@ -3,8 +3,8 @@ import 'package:flutter_svg/svg.dart';
 
 import '../constants/constants.dart';
 
-class CardNetwork {
-  CardNetwork._();
+class CardNetworkIcon {
+  CardNetworkIcon._();
 
   static SvgPicture get jcb {
     return SvgPicture.asset(
