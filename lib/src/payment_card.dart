@@ -10,14 +10,14 @@ import 'package:payment_card/src/widgets/card_image.dart';
 
 class PaymentCard extends StatelessWidget {
   /// The __`PaymentCard`__ class is a Flutter widget that displays a payment card with customizable properties such as the
-  /// card number, card type, card holder name, and background image. It takes several required and optional parameters
+  /// card number, card network, card holder name, and background image. It takes several required and optional parameters
   /// such as `cardIssuerIcon`, `backgroundColor`, `backgroundImage`, `currency`, `cardNumber`, `validity`, `holder`,
-  /// `cardType`, `cardTypeTextStyle`, `cardNumberStyles`, and `margin`.
+  /// `cardNetwork`, `cardTypeTextStyle`, `cardNumberStyles`, and `margin`.
   ///
   /// The __build__ method of the __`PaymentCard`__ class returns a __Container__ widget with a height of 216 and a width of 320.
   /// The __Container__ widget has a __BoxDecoration__ that includes a background image, a box shadow, a color, and a border
   /// radius. The Container widget also has a __Stack__ widget as its child, which contains the various elements of the
-  /// payment card such as the card number, card type, card holder name, and card issuer icon.
+  /// payment card such as the card number, card network, card holder name, and card issuer icon.
   ///
   /// The __`PaymentCard`__ class uses the __LayoutBuilder__ widget to get the maximum width of the parent widget
   // and logs it using the _log_ function from the dart:developer library.
@@ -30,7 +30,7 @@ class PaymentCard extends StatelessWidget {
     required this.cardNumber,
     required this.validity,
     required this.holder,
-    required this.cardType,
+    this.cardNetwork,
     this.cardTypeTextStyle,
     this.cardNumberStyles,
     this.margin,
@@ -47,7 +47,7 @@ class PaymentCard extends StatelessWidget {
   final int? cardNumberDivision;
   final String validity;
   final String holder;
-  final CardType? cardType;
+  final CardNetwork? cardNetwork;
   final TextStyle? cardTypeTextStyle;
   final CardNumberStyles? cardNumberStyles;
   final EdgeInsetsGeometry? margin;
@@ -60,7 +60,7 @@ class PaymentCard extends StatelessWidget {
   // If the cardNumber parameter is null, the widget will throw an error.
   // If the validity parameter is null, the widget will throw an error.
   // If the holder parameter is null, the widget will throw an error.
-  // If the cardType parameter is null, the widget will throw an error.
+  // If the cardNetwork parameter is null, the widget will throw an error.
   // If the cardTypeTextStyle parameter is null, the widget will use the default text style.
   // If the cardNumberStyles parameter is null, the widget will use the default card number styles.
 
@@ -174,19 +174,19 @@ class PaymentCard extends StatelessWidget {
             ),
           ),
 
-          /// Card Type
+          /// Card Network
           Positioned(
-            bottom: 10 /*cardType.index == 1 ? -10 : 0*/,
+            bottom: 10 /*cardNetwork.index == 1 ? -10 : 0*/,
             right: 10,
             //height: 45,
             width: 80,
             child: /*Image(
-              image: ExactAssetImage(cardType.getTypeIcon, package: Constants.packageName),
+              image: ExactAssetImage(cardNetwork.getTypeIcon, package: Constants.packageName),
               width: 75,
               height: 75,
               fit: BoxFit.cover,
             ),*/
-                Container(color: kColor, child: cardType?.getTypeIcon(cardNumber, isStrict)),
+                Container(color: kColor, child: cardNetwork?.getTypeIcon(cardNumber, isStrict)),
           ),
 
           Positioned(
@@ -195,7 +195,7 @@ class PaymentCard extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.only(right: 5),
               child: Text(
-                cardType?.index == 1 ? '' : 'Debit',
+                cardNetwork?.index == 1 ? '' : 'Debit',
                 style: cardTypeTextStyle,
               ),
             ),

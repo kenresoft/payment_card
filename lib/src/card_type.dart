@@ -1,4 +1,4 @@
-enum CardType {
+enum CardNetwork {
   visa,
   mastercard,
   verve,

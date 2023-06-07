@@ -15,7 +15,7 @@ void main() {
             cardNumber: '1234567890123456',
             validity: '12/24',
             holder: 'John Doe',
-            cardType: CardType.visa,
+            cardNetwork: CardNetwork.visa,
           ),
         ),
       );
@@ -36,7 +36,7 @@ void main() {
           currency: Text('USD'),
           validity: '12/24',
           holder: 'John Doe',
-          cardType: CardType.visa,
+          cardNetwork: CardNetwork.visa,
           cardNumber: null,
         );
       }, throwsAssertionError);
@@ -50,7 +50,7 @@ void main() {
           currency: Text('USD'),
           cardNumber: '1234567890123456',
           holder: 'John Doe',
-          cardType: CardType.visa,
+          cardNetwork: CardNetwork.visa,
           validity: null,
         );
       }, throwsAssertionError);
@@ -64,7 +64,7 @@ void main() {
           currency: Text('USD'),
           cardNumber: '1234567890123456',
           validity: '12/24',
-          cardType: CardType.visa,
+          cardNetwork: CardNetwork.visa,
           holder: null,
         );
       }, throwsAssertionError);
@@ -79,7 +79,7 @@ void main() {
           cardNumber: '1234567890123456',
           validity: '12/24',
           holder: 'John Doe',
-          cardType: null,
+          cardNetwork: null,
         );
       }, throwsAssertionError);
     });

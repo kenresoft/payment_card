@@ -55,5 +55,5 @@ class Constants {
   static const String inconsolata = "Inconsolata";
 
   //
-  static String card(CardType cardType) => cardType.name.toFirstUpperCase;
+  static String card(CardNetwork cardType) => cardType.name.toFirstUpperCase;
 }
