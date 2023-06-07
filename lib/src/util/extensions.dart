@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:payment_card/src/util/matcher.dart';
-import 'package:payment_card/src/widgets/card_network.dart';
 
 import '../../payment_card.dart';
 import '../constants/constants.dart';
+import '../widgets/card_network_icon.dart';
 
 extension CardTypeIcon on CardNetwork {
   /// The `getTypeIcon()` function can be used to get icons for other types of cards, such as debit cards, gift cards, and prepaid cards.<br>
@@ -22,13 +22,13 @@ extension CardTypeIcon on CardNetwork {
       return Matcher.resolvePrefix(number, (a, b) => this != CardNetwork.verve ? a : b);
     } else {
       return switch (this) {
-        CardNetwork.visa => CardNetwork.visa,
-        CardNetwork.mastercard => CardNetwork.mastercard,
-        CardNetwork.verve => CardNetwork.verve,
-        CardNetwork.americanExpress => CardNetwork.americanExpress,
-        CardNetwork.discover => CardNetwork.discover,
-        CardNetwork.jcb => CardNetwork.jcb,
-        _ => CardNetwork.visa,
+        CardNetwork.visa => CardNetworkIcon.visa,
+        CardNetwork.mastercard => CardNetworkIcon.mastercard,
+        CardNetwork.verve => CardNetworkIcon.verve,
+        CardNetwork.americanExpress => CardNetworkIcon.americanExpress,
+        CardNetwork.discover => CardNetworkIcon.discover,
+        CardNetwork.jcb => CardNetworkIcon.jcb,
+        _ => CardNetworkIcon.visa,
       };
     }
   }
