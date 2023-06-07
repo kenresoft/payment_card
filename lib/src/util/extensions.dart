@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:payment_card/src/util/matcher.dart';
+import 'package:payment_card/src/widgets/card_network.dart';
 
 import '../../payment_card.dart';
 import '../constants/constants.dart';
@@ -19,77 +19,19 @@ extension CardTypeIcon on CardType {
 
   Widget getTypeIcon(String number, bool isStrict) {
     if (isStrict) {
-      return resolvePrefix(number, (a, b) => this != CardType.verve ? a : b);
+      return Matcher.resolvePrefix(number, (a, b) => this != CardType.verve ? a : b);
     } else {
       return switch (this) {
-        CardType.visa => visa,
-        CardType.mastercard => mastercard,
-        CardType.verve => verve,
-        CardType.americanExpress => americanExpress,
-        CardType.discover => discover,
-        CardType.jcb => jcb,
-        _ => visa,
+        CardType.visa => CardNetwork.visa,
+        CardType.mastercard => CardNetwork.mastercard,
+        CardType.verve => CardNetwork.verve,
+        CardType.americanExpress => CardNetwork.americanExpress,
+        CardType.discover => CardNetwork.discover,
+        CardType.jcb => CardNetwork.jcb,
+        _ => CardNetwork.visa,
       };
     }
   }
-}
-
-SvgPicture get jcb {
-  return SvgPicture.asset(
-    Constants.jcb,
-    package: Constants.packageName,
-    height: 35,
-    fit: BoxFit.contain,
-  );
-}
-
-SvgPicture get discover {
-  return SvgPicture.asset(
-    Constants.discover,
-    package: Constants.packageName,
-    height: 40,
-    fit: BoxFit.fitWidth,
-  );
-}
-
-Image get americanExpress {
-  return const Image(
-    image: ExactAssetImage(
-      Constants.americanExpress,
-      package: Constants.packageName,
-    ),
-    height: 40,
-    fit: BoxFit.fitWidth,
-  );
-}
-
-SvgPicture get verve {
-  return SvgPicture.asset(
-    Constants.verve,
-    package: Constants.packageName,
-    height: 40,
-    fit: BoxFit.contain,
-  );
-}
-
-SvgPicture get mastercard {
-  return SvgPicture.asset(
-    Constants.mastercard,
-    package: Constants.packageName,
-    height: 40,
-    fit: BoxFit.contain,
-  );
-}
-
-Image get visa {
-  return const Image(
-    image: ExactAssetImage(
-      Constants.visa,
-      package: Constants.packageName,
-    ),
-    height: 40,
-    fit: BoxFit.fitWidth,
-  );
 }
 
 extension StringExt on String {
