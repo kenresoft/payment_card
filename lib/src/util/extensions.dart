@@ -6,7 +6,7 @@ import 'package:payment_card/src/widgets/card_network.dart';
 import '../../payment_card.dart';
 import '../constants/constants.dart';
 
-extension CardTypeIcon on CardType {
+extension CardTypeIcon on CardNetwork {
   /// The `getTypeIcon()` function can be used to get icons for other types of cards, such as debit cards, gift cards, and prepaid cards.<br>
   ///
   ///The `getTypeIcon()` function works by first checking if the input string should be validated strictly. <br>
@@ -19,15 +19,15 @@ extension CardTypeIcon on CardType {
 
   Widget getTypeIcon(String number, bool isStrict) {
     if (isStrict) {
-      return Matcher.resolvePrefix(number, (a, b) => this != CardType.verve ? a : b);
+      return Matcher.resolvePrefix(number, (a, b) => this != CardNetwork.verve ? a : b);
     } else {
       return switch (this) {
-        CardType.visa => CardNetwork.visa,
-        CardType.mastercard => CardNetwork.mastercard,
-        CardType.verve => CardNetwork.verve,
-        CardType.americanExpress => CardNetwork.americanExpress,
-        CardType.discover => CardNetwork.discover,
-        CardType.jcb => CardNetwork.jcb,
+        CardNetwork.visa => CardNetwork.visa,
+        CardNetwork.mastercard => CardNetwork.mastercard,
+        CardNetwork.verve => CardNetwork.verve,
+        CardNetwork.americanExpress => CardNetwork.americanExpress,
+        CardNetwork.discover => CardNetwork.discover,
+        CardNetwork.jcb => CardNetwork.jcb,
         _ => CardNetwork.visa,
       };
     }
