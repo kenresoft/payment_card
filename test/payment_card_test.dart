@@ -37,7 +37,7 @@ void main() {
           validity: '12/24',
           holder: 'John Doe',
           cardNetwork: CardNetwork.visa,
-          cardNumber: null,
+          cardNumber: '',
         );
       }, throwsAssertionError);
     });
@@ -51,7 +51,7 @@ void main() {
           cardNumber: '1234567890123456',
           holder: 'John Doe',
           cardNetwork: CardNetwork.visa,
-          validity: null,
+          validity: '',
         );
       }, throwsAssertionError);
     });
@@ -65,7 +65,7 @@ void main() {
           cardNumber: '1234567890123456',
           validity: '12/24',
           cardNetwork: CardNetwork.visa,
-          holder: null,
+          holder: '',
         );
       }, throwsAssertionError);
     });
