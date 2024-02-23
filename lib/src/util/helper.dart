@@ -56,7 +56,7 @@ int divisionsWithRemainder(String input) {
 /// String spacedOutput = spacedDigits(input, 2);
 /// print(spacedOutput); // "12 34 56 78 9"
 /// ```
-String spacedDigits(String input, int? div, bool strict) {
+String spacedDigits(String input, int? div, bool strict, /*bool hidePartial*/) {
   int count = 0;
   String spacedOutput = '';
   strict = strict ? Matcher.matchCard(input) : true;
@@ -72,6 +72,11 @@ String spacedDigits(String input, int? div, bool strict) {
           spacedOutput += ' ';
           count = 0;
         }
+        /*if (hidePartial && i < input.length - 4) {
+          spacedOutput += '*';
+        } else {
+          spacedOutput += input[i];
+        }*/
         spacedOutput += input[i];
         count += 1;
       }
