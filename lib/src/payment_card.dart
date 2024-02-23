@@ -13,7 +13,7 @@ import 'package:payment_card/src/widgets/card_image.dart';
 /// The `PaymentCard` widget displays a payment card with customizable properties such as the
 /// card number, card network, card holder name, and background image. <br />
 /// It takes several required and optional parameters
-/// such as `cardIssuerIcon`, `backgroundColor`, `backgroundImage`, `currency`, `cardNumber`, `validity`, `holder`,
+/// such as `cardIssuerIcon`, `backgroundColor`, `backgroundGradient`, `backgroundImage`, `currency`, `cardNumber`, `validity`, `holder`,
 /// `cardNetwork`, `cardTypeTextStyle`, `cardNumberStyles`, and `margin`. <br /><br />
 ///
 /// The __build__ method of the __`PaymentCard`__ class returns a __Container__ widget with a height of 216 and a width of 320.
@@ -31,6 +31,7 @@ class PaymentCard extends StatelessWidget {
   ///
   /// [cardIssuerIcon] is an optional widget representing the card issuer icon.
   /// [backgroundColor] is the background color of the card.
+  /// [backgroundGradient] is the background gradient color of the card.
   /// [backgroundImage] is the background image of the card.
   /// [currency] is the currency text widget.
   /// [cardNumber] is the card number.
@@ -46,6 +47,7 @@ class PaymentCard extends StatelessWidget {
     super.key,
     this.cardIssuerIcon = const CardIcon(),
     required this.backgroundColor,
+    this.backgroundGradient,
     required this.backgroundImage,
     required this.currency,
     required this.cardNumber,
@@ -66,6 +68,9 @@ class PaymentCard extends StatelessWidget {
 
   /// The background color of the payment card.
   final Color? backgroundColor;
+
+  /// The background gradient color of the payment card.
+  final LinearGradient? backgroundGradient;
 
   /// The background image of the payment card.
   final String? backgroundImage;
@@ -135,6 +140,7 @@ class PaymentCard extends StatelessWidget {
             BoxShadow(blurRadius: 3, offset: Offset(1, 1)) /*, BoxShadow(blurRadius: 1, offset: Offset(-1, -1))*/
           ],
           color: backgroundImage == null ? backgroundColor : Colors.transparent,
+          gradient: backgroundGradient,
           borderRadius: BorderRadius.circular(15),
         ),
         child: Stack(children: [
@@ -182,8 +188,14 @@ class PaymentCard extends StatelessWidget {
             const SizedBox(height: 5),
 
             /// Number
+            // Fix: The number length exceeds maximum constraint. Limit length and
+            // ensure input is a number with no spaces and within permitted length.
             Text(
-              spacedDigits(cardNumber, cardNumberDivision, isStrict),
+              spacedDigits(
+                cardNumber,
+                cardNumberDivision,
+                isStrict, /*true*/
+              ),
               style: cardNumberStyle.buildTextStyle(),
             ),
 
@@ -229,6 +241,7 @@ class PaymentCard extends StatelessWidget {
                   fontSize: 18,
                 ).applyPackage,
                 overflow: TextOverflow.fade,
+                textAlign: TextAlign.center,
               ),
             ),
           ),
