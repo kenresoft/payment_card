@@ -8,21 +8,42 @@ import 'package:payment_card/src/widgets/card_currency_text.dart';
 import 'package:payment_card/src/widgets/card_icon.dart';
 import 'package:payment_card/src/widgets/card_image.dart';
 
+/// A Flutter widget that displays a payment card with customizable properties such as the
+/// card number, card network, card holder name, and background image.
+/// The `PaymentCard` widget displays a payment card with customizable properties such as the
+/// card number, card network, card holder name, and background image. <br />
+/// It takes several required and optional parameters
+/// such as `cardIssuerIcon`, `backgroundColor`, `backgroundImage`, `currency`, `cardNumber`, `validity`, `holder`,
+/// `cardNetwork`, `cardTypeTextStyle`, `cardNumberStyles`, and `margin`. <br /><br />
+///
+/// The __build__ method of the __`PaymentCard`__ class returns a __Container__ widget with a height of 216 and a width of 320.
+/// The __Container__ widget has a __BoxDecoration__ that includes a background image, a box shadow, a color, and a border
+/// radius. <br />
+/// The Container widget also has a __Stack__ widget as its child, which contains the various elements of the
+/// payment card such as the card number, card network, card holder name, and card issuer icon.
+///
+/// The __`PaymentCard`__ class uses the __LayoutBuilder__ widget to get the maximum width of the parent widget.
+
 class PaymentCard extends StatelessWidget {
-  /// The __`PaymentCard`__ class is a Flutter widget that displays a payment card with customizable properties such as the
-  /// card number, card network, card holder name, and background image. It takes several required and optional parameters
-  /// such as `cardIssuerIcon`, `backgroundColor`, `backgroundImage`, `currency`, `cardNumber`, `validity`, `holder`,
-  /// `cardNetwork`, `cardTypeTextStyle`, `cardNumberStyles`, and `margin`.
+  /// The `PaymentCard` constructor.
   ///
-  /// The __build__ method of the __`PaymentCard`__ class returns a __Container__ widget with a height of 216 and a width of 320.
-  /// The __Container__ widget has a __BoxDecoration__ that includes a background image, a box shadow, a color, and a border
-  /// radius. The Container widget also has a __Stack__ widget as its child, which contains the various elements of the
-  /// payment card such as the card number, card network, card holder name, and card issuer icon.
+  /// Creates a payment card widget.
   ///
-  /// The __`PaymentCard`__ class uses the __LayoutBuilder__ widget to get the maximum width of the parent widget
-  // and logs it using the _log_ function from the dart:developer library.
+  /// [cardIssuerIcon] is an optional widget representing the card issuer icon.
+  /// [backgroundColor] is the background color of the card.
+  /// [backgroundImage] is the background image of the card.
+  /// [currency] is the currency text widget.
+  /// [cardNumber] is the card number.
+  /// [validity] is the validity date of the card.
+  /// [holder] is the name of the card holder.
+  /// [cardNetwork] is the type of card network.
+  /// [cardTypeTextStyle] is the text style for displaying the card type.
+  /// [cardNumberStyles] is the style for displaying the card number.
+  /// [margin] is the margin around the card.
+  /// [cardNumberDivision] is the division number for spacing the card number.
+  /// [isStrict] specifies whether to enforce strict spacing for the card number.
   const PaymentCard({
-    Key? key,
+    super.key,
     this.cardIssuerIcon = const CardIcon(),
     required this.backgroundColor,
     required this.backgroundImage,
@@ -36,26 +57,53 @@ class PaymentCard extends StatelessWidget {
     this.margin,
     this.cardNumberDivision,
     this.isStrict = true,
-  }) : super(key: key);
+  });
 
+  // Parameter documentation
+
+  /// The icon representing the card issuer.
   final CardIcon? cardIssuerIcon;
-  final Color? backgroundColor;
-  final String? backgroundImage;
-  final Text? currency;
-  final String cardNumber;
-  final bool isStrict;
-  final int? cardNumberDivision;
-  final String validity;
-  final String holder;
-  final CardNetwork? cardNetwork;
-  final TextStyle? cardTypeTextStyle;
-  final CardNumberStyles? cardNumberStyles;
-  final EdgeInsetsGeometry? margin;
 
-  /// If cardNumberStyles is not provided, use the default style
+  /// The background color of the payment card.
+  final Color? backgroundColor;
+
+  /// The background image of the payment card.
+  final String? backgroundImage;
+
+  /// The currency text displayed on the payment card.
+  final Text? currency;
+
+  /// The card number.
+  final String cardNumber;
+
+  /// Whether to enforce strict spacing of digits in the card number.
+  final bool isStrict;
+
+  /// The number of digits to group together in the card number.
+  final int? cardNumberDivision;
+
+  /// The validity date of the card.
+  final String validity;
+
+  /// The name of the card holder.
+  final String holder;
+
+  /// The network of the card.
+  final CardNetwork? cardNetwork;
+
+  /// The text style for the card type.
+  final TextStyle? cardTypeTextStyle;
+
+  /// The styles for the card number.
+  /// If cardNumberStyles is not provided, the default style is used.
   CardNumberStyles get cardNumberStyle => cardNumberStyles ?? CardNumberStyles.lightStyle1;
 
-  //TODO:
+  /// The styles for the card number.
+  final CardNumberStyles? cardNumberStyles;
+
+  /// The margin space around the payment card.
+  final EdgeInsetsGeometry? margin;
+
   // Possible bugs
   // If the cardNumber parameter is null, the widget will throw an error.
   // If the validity parameter is null, the widget will throw an error.
@@ -80,7 +128,7 @@ class PaymentCard extends StatelessWidget {
       return Container(
         margin: margin,
         height: 216,
-        width: 320,
+        width: 360,
         decoration: BoxDecoration(
           image: DecorationImage(image: buildExactAssetImage(backgroundImage), fit: BoxFit.cover),
           boxShadow: const [
@@ -145,8 +193,13 @@ class PaymentCard extends StatelessWidget {
             Column(children: [
               const Text("MONTH/YEAR", style: TextStyle(fontSize: 11)),
               Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                const Text("VALID\nTHRU", textAlign: TextAlign.center),
-                const SizedBox(width: 10),
+                const SizedBox(width: 30),
+                const Text(
+                  "VALID\nTHRU",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 13),
+                ),
+                const SizedBox(width: 13),
                 Text(validity, style: const TextStyle(fontSize: 20)),
               ])
             ]),
@@ -161,16 +214,22 @@ class PaymentCard extends StatelessWidget {
 
           /// Holder's name
           Positioned(
-            bottom: 15,
-            left: 35,
-            child: Text(
-              holder,
-              style: const TextStyle(
-                fontFamily: 'Inconsolata',
-                fontWeight: FontWeight.w500,
-                shadows: [BoxShadow(blurRadius: 0.1, offset: Offset(0, 0))],
-                fontSize: 18,
-              ).applyPackage,
+            bottom: 10,
+            left: 25,
+            child: Container(
+              alignment: Alignment.center,
+              width: 120,
+              height: 55,
+              child: Text(
+                holder,
+                style: const TextStyle(
+                  fontFamily: 'Inconsolata',
+                  fontWeight: FontWeight.w500,
+                  shadows: [BoxShadow(blurRadius: 0.1, offset: Offset(0, 0))],
+                  fontSize: 18,
+                ).applyPackage,
+                overflow: TextOverflow.fade,
+              ),
             ),
           ),
 

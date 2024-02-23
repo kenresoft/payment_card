@@ -14,6 +14,10 @@ Widget buildCurrencyText(Text? currency) {
     );
   }
   return Builder(builder: (context) {
-    return Text(currency.data!, style: textStyle.applyPackage);
+    return SizedBox(
+      width: 130,
+      height: 20,
+      child: Text(currency.data!, style: textStyle.applyPackage),
+    );
   });
 }
