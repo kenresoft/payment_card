@@ -3,9 +3,11 @@ import 'package:flutter_svg/svg.dart';
 
 import '../constants/constants.dart';
 
+/// A utility class providing static methods to retrieve card network icons.
 class CardNetworkIcon {
   CardNetworkIcon._();
 
+  /// Returns the JCB card network icon as an SvgPicture widget.
   static SvgPicture get jcb {
     return SvgPicture.asset(
       Constants.jcb,
@@ -15,6 +17,7 @@ class CardNetworkIcon {
     );
   }
 
+  /// Returns the Discover card network icon as an SvgPicture widget.
   static SvgPicture get discover {
     return SvgPicture.asset(
       Constants.discover,
@@ -24,6 +27,7 @@ class CardNetworkIcon {
     );
   }
 
+  /// Returns the American Express card network icon as an Image widget.
   static Image get americanExpress {
     return const Image(
       image: ExactAssetImage(
@@ -35,6 +39,7 @@ class CardNetworkIcon {
     );
   }
 
+  /// Returns the Verve card network icon as an SvgPicture widget.
   static SvgPicture get verve {
     return SvgPicture.asset(
       Constants.verve,
@@ -44,6 +49,7 @@ class CardNetworkIcon {
     );
   }
 
+  /// Returns the Mastercard card network icon as an SvgPicture widget.
   static SvgPicture get mastercard {
     return SvgPicture.asset(
       Constants.mastercard,
@@ -53,6 +59,7 @@ class CardNetworkIcon {
     );
   }
 
+  /// Returns the Visa card network icon as an Image widget.
   static Image get visa {
     return const Image(
       image: ExactAssetImage(

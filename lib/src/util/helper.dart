@@ -1,16 +1,13 @@
-import 'dart:developer';
-
 import 'matcher.dart';
 
 /// Read more about these functions here:
 ///
 /// [Payment card number division with a space as the separator.](https://gist.github.com/kenresoft/bc91291c6d1d06826002939c38f5498a)
 ///
-// This code is written in Dart programming language
 
-// This function takes a string input and returns the number of divisions that can be made
-// in the string based on its length. A division is made by adding a space character after
-// every n characters, where n is the number of divisions.
+/// This function takes a string input and returns the number of divisions that can be made
+/// in the string based on its length. A division is made by adding a space character after
+/// every n characters, where n is the number of divisions.
 int divisions(String input) {
   int divisions = 0;
 
@@ -37,10 +34,19 @@ int divisionsWithRemainder(String input) {
   return divisions;
 }
 
-/// * The `spacedDigits()` function takes two arguments: the input string and the divisor. The divisor is optional. If the divisor is not provided, then the function will use the number of digits in the input string as the divisor.
+/// * The `spacedDigits()` function formats the input string by adding spaces between each digit, based on a provided divisor.
+/// * It takes two arguments: the input string and the divisor. The divisor is optional.
+/// If the divisor is not provided, then the function will use the number of digits in the input string as the divisor.
 ///
-/// * The `spacedDigits()` function works by first calling the `space()` function to get a string with spaces inserted between each digit of the input string. If the divisor is provided, then the `space()` function will use the divisor to determine how many spaces to insert between each digit.
+/// * The `spacedDigits()` function works by first calling the `space()` function to get a string with spaces inserted between each digit of the input string.
+/// If the divisor is provided, then the `space()` function will use the divisor to determine how many spaces to insert between each digit.
 ///
+/// The [input] parameter is the string input to be formatted.
+/// The [div] parameter is the divisor used to determine the number of spaces to insert between each digit.
+/// The [strict] parameter specifies whether the input string should be strictly validated.
+///
+/// If [strict] is true, the input string is validated, and the formatted output string with spaces between each digit is returned.
+/// If [strict] is false, 'Invalid card number' is returned.
 /// * The `spacedDigits()` function then returns the string with spaces inserted between each digit.
 ///
 /// Here is an example of how to use the `spacedDigits()` function:
@@ -81,8 +87,12 @@ String spacedDigits(String input, int? div, bool strict) {
   }
 }
 
-// This function takes a string input and adds spaces after every n characters, where n
-// is the number of divisions calculated by the divisions() function.
+/// Adds spaces after every n characters in the input string, where n is determined by the divisions() function.
+///
+/// The [input] parameter is the string input to which spaces are to be added.
+/// The [div] parameter is a callback function that returns the number of divisions calculated by the divisions() function.
+///
+/// It returns the input string with spaces added after every n characters.
 String space(String input, int Function() div) {
   int count = 0;
   String spacedOutput = '';
