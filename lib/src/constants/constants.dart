@@ -50,6 +50,7 @@ class Constants {
   //static const String americanExpress = "$svgDir/american_express.svg";
   static const String discover = "$svgDir/discover.svg";
   static const String jcb = "$svgDir/jcb.svg";
+  static const String bankLogo = "$svgDir/zenith_bank_logo.svg";
 
   //Fonts
   static const String inconsolata = "Inconsolata";
