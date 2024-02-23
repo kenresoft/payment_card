@@ -41,7 +41,7 @@ class PaymentCard extends StatelessWidget {
   /// [cardNumberStyles] is the style for displaying the card number.
   /// [margin] is the margin around the card.
   /// [cardNumberDivision] is the division number for spacing the card number.
-  /// [isStrict] specifies whether to enforce strict spacing for the card number.
+  /// [isStrict] parameter specifies whether to validate the card number strictly.
   const PaymentCard({
     super.key,
     this.cardIssuerIcon = const CardIcon(),
@@ -76,7 +76,7 @@ class PaymentCard extends StatelessWidget {
   /// The card number.
   final String cardNumber;
 
-  /// Whether to enforce strict spacing of digits in the card number.
+  /// Whether to validate the card number strictly.
   final bool isStrict;
 
   /// The number of digits to group together in the card number.
