@@ -11,10 +11,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Payment Card Examples'),
-        ),
+        backgroundColor: Colors.black12,
         body: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.all(16.0),
@@ -49,6 +48,7 @@ class MyApp extends StatelessWidget {
       cardNumber: '1234567890123456',
       validity: '10/24',
       holder: 'Jane Doe',
+      isStrict: false,
       cardNetwork: CardNetwork.visa,
       cardTypeTextStyle: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
       cardNumberStyles: CardNumberStyles.darkStyle4,
@@ -61,6 +61,12 @@ class MyApp extends StatelessWidget {
       cardIssuerIcon: CardIcon(icon: Icons.credit_card),
       currency: Text('GBP'),
       cardNumber: '1234567890123456',
+      isStrict: false,
+      backgroundGradient: LinearGradient(
+        colors: [Colors.grey, Colors.white],
+        begin: Alignment.topLeft,
+        end: Alignment.bottomRight,
+      ),
       validity: '08/23',
       holder: 'John Smith',
       cardNetwork: CardNetwork.mastercard,
@@ -75,11 +81,17 @@ class MyApp extends StatelessWidget {
     return const PaymentCard(
       cardIssuerIcon: CardIcon(icon: Icons.credit_card),
       backgroundColor: Colors.green,
+      backgroundGradient: LinearGradient(
+        colors: [Colors.blue, Colors.green, Colors.blue, Colors.green, Colors.blue],
+        begin: Alignment.bottomLeft,
+        end: Alignment.bottomRight,
+      ),
       backgroundImage: null,
       currency: Text('USD'),
       cardNumber: '1234567890123456',
       validity: '06/22',
       holder: 'Alice Johnson',
+      isStrict: false,
       cardNetwork: CardNetwork.americanExpress,
       cardTypeTextStyle: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
       cardNumberStyles: CardNumberStyles.lightStyle3,
@@ -94,6 +106,12 @@ class MyApp extends StatelessWidget {
       cardNumber: '1234567890123456',
       validity: '09/25',
       holder: 'Robert Brown',
+      isStrict: false,
+      backgroundGradient: LinearGradient(
+        colors: [Colors.orange, Colors.pink],
+        begin: Alignment.topCenter,
+        end: Alignment.bottomCenter,
+      ),
       cardNetwork: CardNetwork.discover,
       cardTypeTextStyle: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
       cardNumberStyles: CardNumberStyles.darkStyle5,
